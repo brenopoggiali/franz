@@ -58,7 +58,7 @@ export default class RequestStore extends Store {
         }
 
         this._autoRetry();
-        debug(`Retry required requests delayed in ${(delay) / 1000}s`);
+        debug(`Retry required requests delayed in ${(delay) / 1}s`);
       }, delay);
     }
   }

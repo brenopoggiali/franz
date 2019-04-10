@@ -18,15 +18,15 @@ export default class User {
   // better assume it's confirmed to avoid noise
   @observable subscription = {};
 
-  @observable isSubscriptionOwner = false;
+  @observable isSubscriptionOwner = true;
 
-  @observable isPremium = false;
+  @observable isPremium = true;
 
   @observable beta = false;
 
   @observable donor = {};
 
-  @observable isDonor = false;
+  @observable isDonor = true;
 
   @observable isMiner = false;
 

@@ -8,17 +8,17 @@ import { gaEvent, gaPage } from '../../lib/analytics';
 const debug = require('debug')('Franz:feature:delayApp');
 
 export const config = {
-  delayOffset: DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.delayOffset,
-  delayDuration: DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.wait,
+  delayOffset: 0,
+  delayDuration: 0,
 };
 
 export const state = observable({
-  isDelayAppScreenVisible: DEFAULT_FEATURES_CONFIG.needToWaitToProceed,
+  isDelayAppScreenVisible: false,
 });
 
 function setVisibility(value) {
   Object.assign(state, {
-    isDelayAppScreenVisible: value,
+    isDelayAppScreenVisible: false,
   });
 }
 
@@ -40,8 +40,8 @@ export default function init(stores) {
 
         const { needToWaitToProceedConfig: globalConfig } = stores.features.features;
 
-        config.delayOffset = globalConfig.delayOffset !== undefined ? globalConfig.delayOffset : DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.delayOffset;
-        config.delayDuration = globalConfig.wait !== undefined ? globalConfig.wait : DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.wait;
+        config.delayOffset = globalConfig.delayOffset !== undefined ? globalConfig.delayOffset : 0;
+        config.delayDuration = globalConfig.wait !== undefined ? globalConfig.wait : 0;
 
         autorun(() => {
           if (stores.services.all.length === 0) {
@@ -51,7 +51,7 @@ export default function init(stores) {
 
           const diff = moment().diff(timeLastDelay);
           if ((stores.app.isFocused && diff >= config.delayOffset) || !shownAfterLaunch) {
-            debug(`App will be delayed for ${config.delayDuration / 1000}s`);
+            debug(`App will be delayed for ${config.delayDuration / 1}s`);
 
             setVisibility(true);
             gaPage('/delayApp');
@@ -64,7 +64,7 @@ export default function init(stores) {
               debug('Resetting app delay');
 
               setVisibility(false);
-            }, DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.wait + 1000); // timer needs to be able to hit 0
+            }, DEFAULT_FEATURES_CONFIG.needToWaitToProceedConfig.wait + 1); // timer needs to be able to hit 0
           }
         });
       } else {

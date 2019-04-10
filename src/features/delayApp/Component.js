@@ -42,7 +42,7 @@ export default @inject('actions') @injectSheet(styles) @observer class DelayApp 
 
   countdownInterval = null;
 
-  countdownIntervalTimeout = 1000;
+  countdownIntervalTimeout = null;
 
   componentDidMount() {
     this.countdownInterval = setInterval(() => {
@@ -74,19 +74,7 @@ export default @inject('actions') @injectSheet(styles) @observer class DelayApp 
     const { intl } = this.context;
 
     return (
-      <div className={`${classes.container}`}>
-        <h1 className={classes.headline}>{intl.formatMessage(messages.headline)}</h1>
-        <Button
-          label={intl.formatMessage(messages.action)}
-          className={classes.button}
-          buttonType="inverted"
-          onClick={this.handleCTAClick.bind(this)}
-        />
-        <p className="footnote">
-          {intl.formatMessage(messages.text, {
-            seconds: this.state.countdown / 1000,
-          })}
-        </p>
+      <div>
       </div>
     );
   }

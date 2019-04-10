@@ -36,12 +36,12 @@ export default @observer class WebviewCrashHandler extends Component {
   };
 
   state = {
-    countdown: ms('10s'),
+    countdown: ms('0s'),
   }
 
   countdownInterval = null;
 
-  countdownIntervalTimeout = ms('1s');
+  countdownIntervalTimeout = null;
 
 
   componentDidMount() {
@@ -64,21 +64,7 @@ export default @observer class WebviewCrashHandler extends Component {
     const { intl } = this.context;
 
     return (
-      <div className="services__info-layer">
-        <h1>{intl.formatMessage(messages.headline)}</h1>
-        <p>{intl.formatMessage(messages.text, { name })}</p>
-        <Button
-          // label={`Reload ${name}`}
-          label={intl.formatMessage(messages.action, { name })}
-          buttonType="inverted"
-          onClick={() => reload()}
-        />
-        <p className="footnote">
-          {intl.formatMessage(messages.autoReload, {
-            name,
-            seconds: this.state.countdown / ms('1s'),
-          })}
-        </p>
+      <div>
       </div>
     );
   }

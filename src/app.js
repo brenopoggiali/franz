@@ -88,14 +88,12 @@ window.addEventListener('load', () => {
                 <Route path="/auth/signup">
                   <IndexRedirect to="/auth/signup/form" />
                   <Route path="/auth/signup/form" component={SignupScreen} />
-                  <Route path="/auth/signup/pricing" component={PricingScreen} />
                   <Route path="/auth/signup/import" component={ImportScreen} />
                   <Route path="/auth/signup/invite" component={InviteScreen} />
                 </Route>
                 <Route path="/auth/password" component={PasswordScreen} />
                 <Route path="/auth/logout" component={LoginScreen} />
               </Route>
-              <Route path="/payment/:url" component={SubscriptionPopupScreen} />
               <Route path="*" component={AppLayoutContainer} />
             </Router>
           </I18N>

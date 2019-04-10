@@ -132,7 +132,7 @@ class RecipeController {
 
   async automaticLanguageDetection() {
     const cldFactory = await loadModule();
-    this.cldIdentifier = cldFactory.create(0, 1000);
+    this.cldIdentifier = cldFactory.create(0, 1);
 
     window.addEventListener('keyup', debounce((e) => {
       const element = e.target;

@@ -63,7 +63,6 @@ export default @observer class AppLayout extends Component {
     retryRequiredRequests: PropTypes.func.isRequired,
     areRequiredRequestsLoading: PropTypes.bool.isRequired,
     darkMode: PropTypes.bool.isRequired,
-    isDelayAppScreenVisible: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -92,7 +91,6 @@ export default @observer class AppLayout extends Component {
       retryRequiredRequests,
       areRequiredRequestsLoading,
       darkMode,
-      isDelayAppScreenVisible,
     } = this.props;
 
     const { intl } = this.context;
@@ -163,7 +161,6 @@ export default @observer class AppLayout extends Component {
                     </a>
                   </InfoBar>
                 )}
-                {isDelayAppScreenVisible && (<DelayApp />)}
                 <BasicAuth />
                 <ShareFranz />
                 {services}

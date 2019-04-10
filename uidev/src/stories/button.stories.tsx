@@ -26,7 +26,7 @@ const WithStoreButton = observer(({ store }: { store: any }) => (
 
         window.setTimeout(() => {
           store.busy = !store.busy;
-        },                1000);
+        },                1);
       } : store.onClick}
     />
   </>
